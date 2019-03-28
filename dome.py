@@ -2,13 +2,6 @@ from scipy.optimize import leastsq
 from numpy import array, concatenate, newaxis
 from numpy.linalg import norm
 
-def make_d(p1,d):
-    def f(x):
-        nx = norm(x)
-        np = norm(p1-x)
-        return array([(nx-1)**2,(np-d)**2])
-    return f 
-
 def make_d(p,d):
     def f(x):
         nx = concatenate([norm(x)[newaxis], norm(p-x, axis=1)])
